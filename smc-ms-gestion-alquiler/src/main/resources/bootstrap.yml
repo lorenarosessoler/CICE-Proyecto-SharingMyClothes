@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: smc-ms-gestion-alquiler
+
+  cloud:
+    config:
+      fail-fast: true
+      enabled: true
+      uri:
+      - http://localhost:8888
