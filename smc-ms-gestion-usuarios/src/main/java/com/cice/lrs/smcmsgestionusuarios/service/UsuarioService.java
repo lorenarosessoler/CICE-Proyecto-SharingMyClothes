@@ -47,9 +47,8 @@ public class UsuarioService  implements IUsuarioService {
      */
     @Override
     public UsuarioDTO getUsuario(String username, String password) {
-        //UsuarioEntity usuarioEntity = usuarioRepository.findUsuarioEntityByUserAndPass(user, pass);
-        //return new UsuarioDTO(usuarioEntity.getIdUsuario(), usuarioEntity.getUser(), usuarioEntity.getPass());
-    	return null;
+        UsuarioEntity usuarioEntity = usuarioRepository.findUsuarioEntityByUsernameAndPassword(username, password);
+        return new UsuarioDTO(usuarioEntity.getIdUser(), usuarioEntity.getUsername(), usuarioEntity.getPassword());
     }
 
     
@@ -59,17 +58,16 @@ public class UsuarioService  implements IUsuarioService {
      */
     @Override
     public UsuarioDTO getUsuario(Long idUser) {
-//        Optional<UsuarioEntity> usuarioEntityOptional = usuarioRepository.findById(idUsuario);
-//        UsuarioDTO usuarioDTO = null;
-//        if(usuarioEntityOptional.isPresent()){
-//            usuarioDTO = new UsuarioDTO(
-//                    usuarioEntityOptional.get().getIdUsuario(),
-//                    usuarioEntityOptional.get().getUser(),
-//                    usuarioEntityOptional.get().getPass()
-//            );
-//        }
-//        return usuarioDTO;
-    	return null;
+        Optional<UsuarioEntity> usuarioEntityOptional = usuarioRepository.findById(idUser);
+        UsuarioDTO usuarioDTO = null;
+        if(usuarioEntityOptional.isPresent()){
+            usuarioDTO = new UsuarioDTO(
+                    usuarioEntityOptional.get().getIdUser(),
+                    usuarioEntityOptional.get().getUsername(),
+                    usuarioEntityOptional.get().getPassword()
+            );
+        }
+        return usuarioDTO;
     }
 
     
@@ -89,9 +87,8 @@ public class UsuarioService  implements IUsuarioService {
      */
     @Override
     public UsuarioDTO eliminarUsuario(Long idUsuario) {
-//        usuarioRepository.deleteById(idUsuario);
-//        productoFeign.eliminarProductoByIdUsuario(idUsuario);
-//        return null;
+        usuarioRepository.deleteById(idUsuario);
+      //  productoFeign.eliminarProductoByIdUsuario(idUsuario);
     	return null;
     }
 }
